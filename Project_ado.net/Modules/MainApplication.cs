@@ -15,7 +15,7 @@ namespace Project_ado.net.Modules
                 case 1:
                     await IncomeModule.ShowOptionsIncomeAsync();
                     break;
-                case 2:
+                case 2: await ExpenseModul.ShowOptionsExpenseAsync();
                     break;
                 case 3:
                     await CategoryModule.ShowOptionsCategoryAsync();

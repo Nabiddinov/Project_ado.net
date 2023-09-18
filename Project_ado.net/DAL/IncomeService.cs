@@ -26,16 +26,6 @@ namespace Project_ado.net.DAL
             return await DataAccessLayer.ExecuteQueryAsync(query, ReadToIncome);
         }
 
-
-        //public static async Task CreateIncome(Income newIncome)
-        //{
-        //    ThrowIfNull(newIncome);
-
-        //    string command = $"INSERT INTO {TABLE_NAME} (Description,Amount,Date,CategoryId) VALUES ('{newIncome.Description}',{newIncome.Amount},{newIncome.Date},{newIncome.CategoryId}')";
-
-        //    await DataAccessLayer.ExecuteNonQueryAsync(command);
-        //}
-
         public static async Task CreateIncome(Income newIncome)
         {
             ThrowIfNull(newIncome);
@@ -48,28 +38,6 @@ namespace Project_ado.net.DAL
 
             await DataAccessLayer.ExecuteNonQueryAsync(command);
         }
-
-
-
-
-
-        //    public static async Task UpdateIncome(Income IncomeToUpdate)
-        //    {
-        //        ThrowIfNull(IncomeToUpdate);
-
-        //        string command = $"UPDATE {TABLE_NAME} SET Description = @Description, Amount = @Amount, Date = @Date, CategoryId = @CategoryId WHERE Id = @Id";
-
-        //        SqlParameter[] parameters =
-        //        {
-        //    new SqlParameter("@Description", IncomeToUpdate.Description),
-        //    new SqlParameter("@Amount", IncomeToUpdate.Amount),
-        //    new SqlParameter("@Date", IncomeToUpdate.Date),
-        //    new SqlParameter("@CategoryId", IncomeToUpdate.CategoryId),
-        //    new SqlParameter("@Id", IncomeToUpdate.Id)
-        //};
-
-        //        await DataAccessLayer.ExecuteNonQueryAsync(command);
-        //    }
 
         public static async Task UpdateIncome(Income incomeToUpdate)
         {
@@ -88,10 +56,6 @@ namespace Project_ado.net.DAL
 
             await DataAccessLayer.ExecuteNonQueryAsync(command, parameters);
         }
-
-
-
-
 
         public static async Task DeleteIncome(int id)
         {
@@ -125,31 +89,6 @@ namespace Project_ado.net.DAL
             return null;
         }
 
-        //private static List<Income> ReaderToIncomeList(SqlDataReader reader)
-        //{
-        //    ThrowIfNull(reader);
-
-        //    List<Income> result = new List<Income>();
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Income Income = new Income
-        //            {
-        //                Id = reader.GetInt32(0),
-        //                Description = reader.GetString(1),
-        //                Amount = reader.GetDecimal(2),
-        //                Date = reader.GetDateTime(3),
-        //                CategoryId = reader.GetInt32(4)
-        //            };
-
-        //            result.Add(Income);
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
         private static List<Income> ReaderToIncomeList(SqlDataReader reader)
         {
             ThrowIfNull(reader);
@@ -173,9 +112,6 @@ namespace Project_ado.net.DAL
 
             return result;
         }
-
-
-
 
         private static void ThrowIfNull<T>(T value) where T : class
         {

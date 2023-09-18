@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Project_ado.net.DAL;
 using Project_ado.net.Helpers;
@@ -9,7 +7,7 @@ using Project_ado.net.Models;
 
 namespace Project_ado.net.Modules
 {
-    internal class IncomeModule
+    public class IncomeModule
     {
         public static async Task ShowOptionsIncomeAsync()
         {
@@ -110,7 +108,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter category_id: ");
             int categoryId = int.Parse(Console.ReadLine());
 
-            await IncomeService.UpdateIncome(new Models.Income(input,description,amount, DateTime.Today, categoryId));
+            await IncomeService.UpdateIncome(new Models.Income(input, description, amount, DateTime.Today, categoryId));
         }
 
     }

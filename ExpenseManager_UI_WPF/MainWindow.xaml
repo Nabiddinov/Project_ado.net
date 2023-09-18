@@ -1,0 +1,43 @@
+﻿<Window x:Class="ExpenseManager_UI_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpenseManager_UI_WPF"
+        mc:Ignorable="d"
+        Title="Expense Manager" Height="450" Width="800">
+    <Grid>
+        <!-- First Button: Incomes -->
+        <Button x:Name="btnIncomes" Content="Incomes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="250,10,0,0" Click="btnIncomes_Click"/>
+        <StackPanel x:Name="stackPanelIncomes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
+            <Button Content="See all Incomes"/>
+            <Button Content="Find Income by id"/>
+            <Button Content="Add Income"/>
+            <Button Content="Update Income"/>
+            <Button Content="Delete Income"/>
+            <Button Content="Exit"/>
+        </StackPanel>
+
+        <!-- Second Button: Expense -->
+        <Button x:Name="btnExpense" Content="Expense" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="130,10,0,0" Click="btnIncomes_Click"/>
+        <StackPanel x:Name="stackPanelExpense" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
+            <Button Content="See all Expenses"/>
+            <Button Content="Find Expense by id"/>
+            <Button Content="Add Expense"/>
+            <Button Content="Update Expense"/>
+            <Button Content="Delete Expense"/>
+            <Button Content="Exit"/>
+        </StackPanel>
+
+        <!-- Third Button: Categories -->
+        <Button x:Name="btnCategories" Content="Categories" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="10,10,0,0" Click="btnIncomes_Click"/>
+        <StackPanel x:Name="stackPanelCategories" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
+            <Button Content="See all Categories"/>
+            <Button Content="Find Categore by id"/>
+            <Button Content="Add Categore"/>
+            <Button Content="Update Categore"/>
+            <Button Content="Delete Categore"/>
+            <Button Content="Exit"/>
+        </StackPanel>
+    </Grid>
+</Window>

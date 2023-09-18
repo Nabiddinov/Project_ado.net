@@ -1,16 +1,13 @@
-﻿using Project_ado.net.DAL;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Project_ado.net.DAL;
 using Project_ado.net.Helpers;
 using Project_ado.net.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project_ado.net.Modules
 {
-    internal static class CategoryModule
+    public static class CategoryModule
     {
         public static async Task ShowOptionsCategoryAsync()
         {
@@ -42,7 +39,7 @@ namespace Project_ado.net.Modules
                     return;
             }
         }
-        private static async Task GetAllCategoriesAsync()
+        public static async Task GetAllCategoriesAsync()
         {
             List<Category> categories = await CategoryService.GetAllCategoriesAsync();
 
@@ -105,9 +102,9 @@ namespace Project_ado.net.Modules
             Console.Write("Enter id: ");
             int input = ConsoleHelper.GetOptionInput();
             Console.Write("Enter name: ");
-            string str=Console.ReadLine();
+            string str = Console.ReadLine();
 
-            await CategoryService.UpdateCategory(new Models.Category(input,str));
+            await CategoryService.UpdateCategory(new Models.Category(input, str));
         }
     }
 }

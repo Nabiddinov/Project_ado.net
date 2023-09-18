@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Project_ado.net.DAL;
 using Project_ado.net.Helpers;
@@ -9,7 +7,7 @@ using Project_ado.net.Models;
 
 namespace Project_ado.net.Modules
 {
-    internal class ExpenseModul
+    public class ExpenseModul
     {
         public static async Task ShowOptionsExpenseAsync()
         {

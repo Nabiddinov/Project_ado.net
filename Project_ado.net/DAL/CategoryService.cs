@@ -26,17 +26,14 @@ namespace Project_ado.net.DAL
             return await DataAccessLayer.ExecuteQueryAsync(query, ReadToCategory);
         }
 
-
         public static async Task CreateCategory(Category newCategory)
-         {
-             ThrowIfNull(newCategory);
+        {
+            ThrowIfNull(newCategory);
 
-             string command = $"INSERT INTO {TABLE_NAME} (Name) VALUES ('{newCategory.Name}')";
+            string command = $"INSERT INTO {TABLE_NAME} (Name) VALUES ('{newCategory.Name}')";
 
-             await DataAccessLayer.ExecuteNonQueryAsync(command);
-         }
-
-
+            await DataAccessLayer.ExecuteNonQueryAsync(command);
+        }
 
         public static async Task UpdateCategory(Category categoryToUpdate)
         {
@@ -82,18 +79,15 @@ namespace Project_ado.net.DAL
             ThrowIfNull(reader);
 
             List<Category> result = new List<Category>();
-            if (reader.HasRows)
+            while (reader.Read())
             {
-                while (reader.Read())
+                Category category = new Category
                 {
-                    Category category = new Category
-                    {
-                        Id = reader.GetInt32(0),
-                        Name = reader.GetString(1)
-                    };
+                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                    Name = reader.GetString(reader.GetOrdinal("Name"))
+                };
 
-                    result.Add(category);
-                }
+                result.Add(category);
             }
 
             return result;

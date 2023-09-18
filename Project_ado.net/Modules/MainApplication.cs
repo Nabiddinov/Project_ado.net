@@ -12,7 +12,8 @@ namespace Project_ado.net.Modules
             int input = ConsoleHelper.GetOptionInput();
             switch (input)
             {
-                case 1: await IncomeModule.ShowOptionsIncomeAsync();
+                case 1:
+                    await IncomeModule.ShowOptionsIncomeAsync();
                     break;
                 case 2:
                     break;

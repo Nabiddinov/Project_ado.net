@@ -1,10 +1,8 @@
-﻿using Project_ado.net.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Project_ado.net.Models;
 
 namespace Project_ado.net.DAL
 {
@@ -29,34 +27,71 @@ namespace Project_ado.net.DAL
         }
 
 
+        //public static async Task CreateIncome(Income newIncome)
+        //{
+        //    ThrowIfNull(newIncome);
+
+        //    string command = $"INSERT INTO {TABLE_NAME} (Description,Amount,Date,CategoryId) VALUES ('{newIncome.Description}',{newIncome.Amount},{newIncome.Date},{newIncome.CategoryId}')";
+
+        //    await DataAccessLayer.ExecuteNonQueryAsync(command);
+        //}
+
         public static async Task CreateIncome(Income newIncome)
         {
             ThrowIfNull(newIncome);
 
-            string command = $"INSERT INTO {TABLE_NAME} (Description ,Amount,Date,CategoryId) VALUES ('{newIncome.Description},{newIncome.Amount},{newIncome.Date},{newIncome.CategoryId}')";
+            // Properly format the Date value as a string and add single quotes
+            string formattedDate = newIncome.Date.ToString("yyyy-MM-dd HH:mm:ss");
+
+            // Use parameterized queries to prevent SQL injection
+            string command = $"INSERT INTO {TABLE_NAME} (Description, Amount, Date, CategoryId) VALUES ('{newIncome.Description}', {newIncome.Amount}, '{formattedDate}', {newIncome.CategoryId})";
 
             await DataAccessLayer.ExecuteNonQueryAsync(command);
         }
 
 
 
-        public static async Task UpdateIncome(Income IncomeToUpdate)
+
+
+        //    public static async Task UpdateIncome(Income IncomeToUpdate)
+        //    {
+        //        ThrowIfNull(IncomeToUpdate);
+
+        //        string command = $"UPDATE {TABLE_NAME} SET Description = @Description, Amount = @Amount, Date = @Date, CategoryId = @CategoryId WHERE Id = @Id";
+
+        //        SqlParameter[] parameters =
+        //        {
+        //    new SqlParameter("@Description", IncomeToUpdate.Description),
+        //    new SqlParameter("@Amount", IncomeToUpdate.Amount),
+        //    new SqlParameter("@Date", IncomeToUpdate.Date),
+        //    new SqlParameter("@CategoryId", IncomeToUpdate.CategoryId),
+        //    new SqlParameter("@Id", IncomeToUpdate.Id)
+        //};
+
+        //        await DataAccessLayer.ExecuteNonQueryAsync(command);
+        //    }
+
+        public static async Task UpdateIncome(Income incomeToUpdate)
         {
-            ThrowIfNull(IncomeToUpdate);
+            ThrowIfNull(incomeToUpdate);
 
             string command = $"UPDATE {TABLE_NAME} SET Description = @Description, Amount = @Amount, Date = @Date, CategoryId = @CategoryId WHERE Id = @Id";
 
             SqlParameter[] parameters =
             {
-        new SqlParameter("@Description", IncomeToUpdate.Description),
-        new SqlParameter("@Amount", IncomeToUpdate.Amount),
-        new SqlParameter("@Date", IncomeToUpdate.Date),
-        new SqlParameter("@CategoryId", IncomeToUpdate.CategoryId),
-        new SqlParameter("@Id", IncomeToUpdate.Id)
-    };
+            new SqlParameter("@Description", incomeToUpdate.Description),
+            new SqlParameter("@Amount", incomeToUpdate.Amount),
+            new SqlParameter("@Date", incomeToUpdate.Date),
+            new SqlParameter("@CategoryId", incomeToUpdate.CategoryId),
+            new SqlParameter("@Id", incomeToUpdate.Id)
+        };
 
-            await DataAccessLayer.ExecuteNonQueryAsync(command);
+            await DataAccessLayer.ExecuteNonQueryAsync(command, parameters);
         }
+
+
+
+
 
         public static async Task DeleteIncome(int id)
         {
@@ -78,7 +113,7 @@ namespace Project_ado.net.DAL
                     {
                         Id = reader.GetInt32(0),
                         Description = reader.GetString(1),
-                        Amount = reader.GetInt32(2),
+                        Amount = reader.GetDecimal(2),
                         Date = reader.GetDateTime(3),
                         CategoryId = reader.GetInt32(4)
                     };
@@ -90,6 +125,31 @@ namespace Project_ado.net.DAL
             return null;
         }
 
+        //private static List<Income> ReaderToIncomeList(SqlDataReader reader)
+        //{
+        //    ThrowIfNull(reader);
+
+        //    List<Income> result = new List<Income>();
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            Income Income = new Income
+        //            {
+        //                Id = reader.GetInt32(0),
+        //                Description = reader.GetString(1),
+        //                Amount = reader.GetDecimal(2),
+        //                Date = reader.GetDateTime(3),
+        //                CategoryId = reader.GetInt32(4)
+        //            };
+
+        //            result.Add(Income);
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
         private static List<Income> ReaderToIncomeList(SqlDataReader reader)
         {
             ThrowIfNull(reader);
@@ -99,21 +159,23 @@ namespace Project_ado.net.DAL
             {
                 while (reader.Read())
                 {
-                    Income Income = new Income
-                    {
-                        Id = reader.GetInt32(0),
-                        Description = reader.GetString(1),
-                        Amount = reader.GetInt32(2),
-                        Date = reader.GetDateTime(3),
-                        CategoryId = reader.GetInt32(4)
-                    };
+                    int id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    string description = reader.GetString(reader.GetOrdinal("Description"));
+                    decimal amount = reader.GetDecimal(reader.GetOrdinal("Amount"));
+                    DateTime date = reader.GetDateTime(reader.GetOrdinal("Date"));
+                    int categoryId = reader.GetInt32(reader.GetOrdinal("CategoryId"));
 
-                    result.Add(Income);
+                    Income income = new Income(id, description, amount, date, categoryId);
+
+                    result.Add(income);
                 }
             }
 
             return result;
         }
+
+
+
 
         private static void ThrowIfNull<T>(T value) where T : class
         {

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DAL\CategoryService.cs" />
     <Compile Include="DAL\DataAccessLayer.cs" />
+    <Compile Include="DAL\ExpenseService.cs" />
     <Compile Include="DAL\IncomeService.cs" />
     <Compile Include="Helpers\ConsoleHelper.cs" />
     <Compile Include="Models\Category.cs" />

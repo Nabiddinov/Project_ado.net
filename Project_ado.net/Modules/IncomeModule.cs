@@ -13,7 +13,7 @@ namespace Project_ado.net.Modules
     {
         public static async Task ShowOptionsIncomeAsync()
         {
-            Console.WriteLine("1. See all categories     2. Find Income by id     3. Add Income");
+            Console.WriteLine("1. See all Incomes     2. Find Income by id     3. Add Income");
             Console.WriteLine("4. Update Income        5.Delete Income        ");
 
             int input = ConsoleHelper.GetOptionInput();
@@ -23,7 +23,7 @@ namespace Project_ado.net.Modules
             switch (input)
             {
                 case 1:
-                    await GetAllCategoriesAsync();
+                    await GetAllIncomesAsync();
                     break;
                 case 2:
                     await GetIncomeByIdAsync();
@@ -41,13 +41,13 @@ namespace Project_ado.net.Modules
                     return;
             }
         }
-        private static async Task GetAllCategoriesAsync()
+        private static async Task GetAllIncomesAsync()
         {
-            List<Income> categories = await IncomeService.GetAllIncomesAsync();
+            List<Income> incomes = await IncomeService.GetAllIncomesAsync();
 
-            foreach (var Income in categories)
+            foreach (var income in incomes)
             {
-                Console.WriteLine(Income);
+                Console.WriteLine(income);
             }
 
             Console.Write("Enter any key to continue");
@@ -58,10 +58,10 @@ namespace Project_ado.net.Modules
             Console.Write("Enter description: ");
             string description = Console.ReadLine();
 
-            Console.WriteLine("Amount: ");
+            Console.Write("Amount: ");
             int amount = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter category_id: ");
+            Console.Write("Enter category_id: ");
             int categoryId = int.Parse(Console.ReadLine());
 
             await IncomeService.CreateIncome(new Models.Income(description, amount, DateTime.Today, categoryId));
@@ -69,8 +69,6 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
-       
-
         private static async Task GetIncomeByIdAsync()
         {
             Console.Write("Enter id: ");
@@ -106,10 +104,10 @@ namespace Project_ado.net.Modules
             Console.Write("Enter description: ");
             string description = Console.ReadLine();
 
-            Console.WriteLine("Amount: ");
+            Console.Write("Amount: ");
             int amount = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter category_id: ");
+            Console.Write("Enter category_id: ");
             int categoryId = int.Parse(Console.ReadLine());
 
             await IncomeService.UpdateIncome(new Models.Income(input,description,amount, DateTime.Today, categoryId));

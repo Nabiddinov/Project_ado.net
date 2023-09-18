@@ -36,7 +36,7 @@ namespace Project_ado.net.Models
             CategoryId = categoryId;
         }
 
-        public override string ToString() => $"Id: {Id}, Description: {Description}, ";
+        public override string ToString() => $"Id: {Id}, Description: {Description} ,amount: {Amount},date: {Date},categoryId: {CategoryId} ";
 
     }
 }

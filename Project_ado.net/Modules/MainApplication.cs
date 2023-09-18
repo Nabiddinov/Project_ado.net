@@ -1,10 +1,6 @@
-﻿using Project_ado.net.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Project_ado.net.Helpers;
 
 namespace Project_ado.net.Modules
 {
@@ -16,7 +12,7 @@ namespace Project_ado.net.Modules
             int input = ConsoleHelper.GetOptionInput();
             switch (input)
             {
-                case 1:
+                case 1: await IncomeModule.ShowOptionsIncomeAsync();
                     break;
                 case 2:
                     break;

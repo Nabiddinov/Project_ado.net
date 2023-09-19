@@ -6,7 +6,7 @@ using Project_ado.net.Models;
 
 namespace Project_ado.net.DAL
 {
-    internal class CategoryService
+    public class CategoryService
     {
         private const string TABLE_NAME = "dbo.Category";
 

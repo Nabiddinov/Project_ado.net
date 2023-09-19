@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_ado.net.Models
 {
-    internal class Category
+    public class Category
     {
         public int Id { get; set; }
         public string Name { get; set; }

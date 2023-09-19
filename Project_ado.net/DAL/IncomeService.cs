@@ -30,10 +30,8 @@ namespace Project_ado.net.DAL
         {
             ThrowIfNull(newIncome);
 
-            // Properly format the Date value as a string and add single quotes
             string formattedDate = newIncome.Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-            // Use parameterized queries to prevent SQL injection
             string command = $"INSERT INTO {TABLE_NAME} (Description, Amount, Date, CategoryId) VALUES ('{newIncome.Description}', {newIncome.Amount}, '{formattedDate}', {newIncome.CategoryId})";
 
             await DataAccessLayer.ExecuteNonQueryAsync(command);

@@ -4,40 +4,86 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpenseManager_UI_WPF"
-        mc:Ignorable="d"
-        Title="Expense Manager" Height="450" Width="800">
+        Title="WPF"
+        Width="1000"
+        Height="750"
+        Background="CadetBlue"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+    
+
+
     <Grid>
-        <!-- First Button: Incomes -->
-        <Button x:Name="btnIncomes" Content="Incomes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="250,10,0,0" Click="btnIncomes_Click"/>
-        <StackPanel x:Name="stackPanelIncomes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
-            <Button Content="See all Incomes"/>
-            <Button Content="Find Income by id"/>
-            <Button Content="Add Income"/>
-            <Button Content="Update Income"/>
-            <Button Content="Delete Income"/>
-            <Button Content="Exit"/>
-        </StackPanel>
 
-        <!-- Second Button: Expense -->
-        <Button x:Name="btnExpense" Content="Expense" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="130,10,0,0" Click="btnIncomes_Click"/>
-        <StackPanel x:Name="stackPanelExpense" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
-            <Button Content="See all Expenses"/>
-            <Button Content="Find Expense by id"/>
-            <Button Content="Add Expense"/>
-            <Button Content="Update Expense"/>
-            <Button Content="Delete Expense"/>
-            <Button Content="Exit"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
 
-        <!-- Third Button: Categories -->
-        <Button x:Name="btnCategories" Content="Categories" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="10,10,0,0" Click="btnIncomes_Click"/>
-        <StackPanel x:Name="stackPanelCategories" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="180" Margin="10,50,0,0" Visibility="Collapsed">
-            <Button Content="See all Categories"/>
-            <Button Content="Find Categore by id"/>
-            <Button Content="Add Categore"/>
-            <Button Content="Update Categore"/>
-            <Button Content="Delete Categore"/>
-            <Button Content="Exit"/>
-        </StackPanel>
+        <TabControl>
+            <!-- Category Module Tab -->
+            <TabItem Header="Category Module">
+                <StackPanel>
+                    <!-- ListBox for displaying categories -->
+                    <ListBox x:Name="categoryListBox"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top" 
+                             Width="300" 
+                             Height="150"
+                             Background="WhiteSmoke"
+                             Margin="20"/>
+                    <!-- Buttons for category actions -->
+                    <Button Content="See all categories" Click="CategorySeeAll_Click"/>
+                    <Button Content="Find category by ID" Click="CategoryFindById_Click"/>
+                    <Button Content="Add Category" Click="CategoryAdd_Click"/>
+                    <Button Content="Update Category" Click="CategoryUpdate_Click"/>
+                    <Button Content="Delete Category" Click="CategoryDelete_Click"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Expense Module Tab -->
+            <TabItem Header="Expense Module">
+                <StackPanel>
+                    <!-- ListBox for displaying expenses -->
+                    <ListBox x:Name="expenseListBox" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="300" 
+                             Height="150"
+                             Background="WhiteSmoke"
+                             Margin="20"/>
+                    <!-- Buttons for expense actions -->
+                    <Button Content="See all Expenses" Click="ExpenseSeeAll_Click"/>
+                    <Button Content="Find Expense by ID" Click="ExpenseFindById_Click"/>
+                    <Button Content="Add Expense" Click="ExpenseAdd_Click"/>
+                    <Button Content="Update Expense" Click="ExpenseUpdate_Click"/>
+                    <Button Content="Delete Expense" Click="ExpenseDelete_Click"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Income Module Tab -->
+            <!-- Income Module Tab -->
+            <TabItem Header="Income Module">
+                <StackPanel>
+                    <!-- ListBox for displaying incomes -->
+                    <ListBox x:Name="incomeListBox" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="300" 
+                             Height="150"
+                             Background="WhiteSmoke"
+                             Margin="20"/>
+                    <!-- Buttons for income actions -->
+                    <Button Content="See all Incomes" Click="IncomeSeeAll_Click"/>
+                    <Button Content="Find Income by ID" Click="IncomeFindById_Click"/>
+                    <Button Content="Add Income" Click="IncomeAdd_Click"/>
+                    <Button Content="Update Income" Click="IncomeUpdate_Click"/>
+                    <Button Content="Delete Income" Click="IncomeDelete_Click"/>
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
     </Grid>
 </Window>

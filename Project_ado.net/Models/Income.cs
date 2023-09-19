@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_ado.net.Models
 {
-    internal class Income
+    public class Income
     {
         public int Id { get; set; }
         public string Description { get; set; }

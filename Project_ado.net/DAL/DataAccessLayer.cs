@@ -1,10 +1,7 @@
-﻿using Project_ado.net.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Project_ado.net.Helpers;
 
 namespace Project_ado.net.DAL
 {

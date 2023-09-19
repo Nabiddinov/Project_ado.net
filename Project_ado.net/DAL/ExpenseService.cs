@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Project_ado.net.Models;
 
 namespace Project_ado.net.DAL
 {
-    internal class ExpenseService
+    public class ExpenseService
     {
 
         private const string TABLE_NAME = "dbo.Expense";

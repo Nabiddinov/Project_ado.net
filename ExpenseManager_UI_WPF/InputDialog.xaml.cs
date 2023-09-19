@@ -33,7 +33,7 @@ namespace ExpenseManager_UI_WPF
             }
         }
 
-       
+
     }
 
 }

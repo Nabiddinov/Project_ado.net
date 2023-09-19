@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExpenseManager_UI_WPF;
-using Project_ado.net.DAL;
-using Project_ado.net.Models;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows;
 
 namespace ExpenseManager_UI_WPF
 {
     public partial class CustomInputDialog : UserControl
     {
         public string Title { get; set; }
-        public string InputValue => inputTextBox.Text;
+        public string InputValue => customInputTextBox.Text;
 
         public CustomInputDialog(string title)
         {
@@ -27,6 +19,13 @@ namespace ExpenseManager_UI_WPF
             // Close the dialog when the OK button is clicked
             var parentWindow = Window.GetWindow(this);
             parentWindow.DialogResult = true;
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            // Close the dialog when the Cancel button is clicked
+            var parentWindow = Window.GetWindow(this);
+            parentWindow.DialogResult = false;
         }
     }
 }

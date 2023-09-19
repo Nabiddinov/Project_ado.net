@@ -102,33 +102,34 @@ namespace ExpenseManager_UI_WPF
                 Owner = this
             };
 
-            var tcs = new TaskCompletionSource<bool>();
-            dialog.PreviewKeyDown += (sender, e) =>
-            {
-                if (e.Key == Key.Enter)
-                {
-                    tcs.SetResult(true);
-                    e.Handled = true;
-                }
-            };
+            bool result = false;
 
-            parentWindow.Closed += (sender, e) =>
+            if (dialog is CustomInputDialog customDialog)
             {
-                tcs.SetResult(false);
-            };
+                customDialog.OKButton.Click += (sender, e) =>
+                {
+                    result = true;
+                    parentWindow.DialogResult = true;
+                    parentWindow.Close();
+                };
+
+                customDialog.CancelButton.Click += (sender, e) =>
+                {
+                    result = false;
+                    parentWindow.DialogResult = false;
+                    parentWindow.Close();
+                };
+            }
 
             parentWindow.ShowDialog();
 
-            return await tcs.Task;
+            return result;
         }
 
 
-        // Event handler for "Add Category" button
-        // Event handler for "Add Category" button
-        // Event handler for "Add Category" button
         private async void CategoryAdd_Click(object sender, RoutedEventArgs e)
         {
-            // Create a custom input dialog
+            // Create a custom input dialog with a title
             var inputDialog = new CustomInputDialog("Enter Category Name");
 
             // Show the dialog and wait for user input
@@ -157,6 +158,8 @@ namespace ExpenseManager_UI_WPF
                 }
             }
         }
+
+
 
 
 

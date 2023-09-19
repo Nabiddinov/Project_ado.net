@@ -123,7 +123,5 @@ namespace Project_ado.net.DAL
                 throw new ArgumentNullException(nameof(value));
             }
         }
-
-
     }
 }

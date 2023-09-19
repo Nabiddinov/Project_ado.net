@@ -39,6 +39,7 @@ namespace Project_ado.net.Modules
                     return;
             }
         }
+
         private static async Task GetAllIncomesAsync()
         {
             List<Income> incomes = await IncomeService.GetAllIncomesAsync();
@@ -51,6 +52,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task CreateIncomeModuleAsync()
         {
             Console.Write("Enter description: ");
@@ -67,6 +69,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task GetIncomeByIdAsync()
         {
             Console.Write("Enter id: ");
@@ -87,6 +90,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task DaleteIncomeModulAsync()
         {
             Console.Write("Enter id: ");
@@ -95,6 +99,7 @@ namespace Project_ado.net.Modules
 
             await IncomeService.DeleteIncome(input);
         }
+
         private static async Task UpdateIncomeModulAsync()
         {
             Console.Write("Enter id: ");

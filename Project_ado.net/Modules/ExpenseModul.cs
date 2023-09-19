@@ -39,6 +39,7 @@ namespace Project_ado.net.Modules
                     return;
             }
         }
+
         private static async Task GetAllExpensesAsync()
         {
             List<Expense> Expenses = await ExpenseService.GetAllExpensesAsync();
@@ -51,6 +52,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task CreateExpenseModuleAsync()
         {
             Console.Write("Enter description: ");
@@ -67,6 +69,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task GetExpenseByIdAsync()
         {
             Console.Write("Enter id: ");
@@ -87,6 +90,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task DaleteExpenseModulAsync()
         {
             Console.Write("Enter id: ");
@@ -95,6 +99,7 @@ namespace Project_ado.net.Modules
 
             await ExpenseService.DeleteExpense(input);
         }
+
         private static async Task UpdateExpenseModulAsync()
         {
             Console.Write("Enter id: ");

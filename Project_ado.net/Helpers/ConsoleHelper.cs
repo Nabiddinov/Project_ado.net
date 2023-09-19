@@ -17,6 +17,7 @@ namespace Project_ado.net.Helpers
 
             Console.ForegroundColor = currentColor;
         }
+
         public static void WriteError(string message)
         {
             ConsoleColor currentColor = Console.ForegroundColor;
@@ -26,6 +27,7 @@ namespace Project_ado.net.Helpers
 
             Console.ForegroundColor = currentColor;
         }
+
         public static void WriteLineSuccess(string message)
         {
             var currentColor = Console.ForegroundColor;
@@ -35,6 +37,7 @@ namespace Project_ado.net.Helpers
 
             Console.ForegroundColor = currentColor;
         }
+
         public static void WriteSuccess(string message)
         {
             var currentColor = Console.ForegroundColor;
@@ -44,6 +47,7 @@ namespace Project_ado.net.Helpers
 
             Console.ForegroundColor = currentColor;
         }
+
         public static int GetOptionInput()
         {
             int input;
@@ -54,6 +58,7 @@ namespace Project_ado.net.Helpers
             }
             return input;
         }
+
         public static void ClearCurrentConsoleLine()
         {
             int currentLineCursor = Console.CursorTop;
@@ -61,7 +66,5 @@ namespace Project_ado.net.Helpers
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
-
-       
     }
 }

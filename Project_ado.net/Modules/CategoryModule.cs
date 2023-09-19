@@ -39,6 +39,7 @@ namespace Project_ado.net.Modules
                     return;
             }
         }
+
         public static async Task GetAllCategoriesAsync()
         {
             List<Category> categories = await CategoryService.GetAllCategoriesAsync();
@@ -51,6 +52,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task CreateCategoryModuleAsync()
         {
             Console.WriteLine("Please, enter category values below.");
@@ -69,6 +71,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task GetCategoryByIdAsync()
         {
             Console.Write("Enter id: ");
@@ -89,6 +92,7 @@ namespace Project_ado.net.Modules
             Console.Write("Enter any key to continue");
             Console.ReadKey();
         }
+
         private static async Task DaleteCategoryModulAsync()
         {
             Console.Write("Enter id: ");
@@ -97,6 +101,7 @@ namespace Project_ado.net.Modules
 
             await CategoryService.DeleteCategory(input);
         }
+
         private static async Task UpdateCategoryModulAsync()
         {
             Console.Write("Enter id: ");
@@ -106,5 +111,6 @@ namespace Project_ado.net.Modules
 
             await CategoryService.UpdateCategory(new Models.Category(input, str));
         }
+
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project_ado.net.Models
 {
@@ -15,7 +11,7 @@ namespace Project_ado.net.Models
         public int CategoryId { get; set; }
 
         public Expense()
-        {}
+        { }
 
         public Expense(string description, decimal amount, DateTime date, int categoryId)
         {

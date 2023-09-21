@@ -1,13 +1,6 @@
-﻿using Project_ado.net.DAL;
-using Project_ado.net.Helpers;
-using Project_ado.net.Models;
-using Project_ado.net.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System;
 using System.Threading.Tasks;
+using Project_ado.net.Modules;
 
 namespace Project_ado.net
 {
@@ -21,5 +14,5 @@ namespace Project_ado.net
             await Main(args);
             Console.ReadKey();
         }
-    } 
+    }
 }

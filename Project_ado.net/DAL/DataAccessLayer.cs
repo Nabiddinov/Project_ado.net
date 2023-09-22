@@ -8,6 +8,7 @@ namespace Project_ado.net.DAL
     internal static class DataAccessLayer
     {
         public const string Connection_String = "Data Source=DESKTOP-11M5EOQ;Initial Catalog=ExpenseManager1;Integrated Security=True";
+
         public static async Task ExecuteNonQueryAsync(string command)
         {
             ThrowIfNullOrEmpty(command);
@@ -35,6 +36,7 @@ namespace Project_ado.net.DAL
                 ConsoleHelper.WriteLineError($"Something went wrong: {ex.Message}.");
             }
         }
+
         public static async Task<T> ExecuteQueryAsync<T>(string command, Func<SqlDataReader, T> converter)
         {
             ThrowIfNullOrEmpty(command);
@@ -64,6 +66,7 @@ namespace Project_ado.net.DAL
 
             return default;
         }
+
         public static async Task ExecuteNonQueryAsync(string command, SqlParameter[] parameters)
         {
             ThrowIfNullOrEmpty(command);
@@ -96,6 +99,7 @@ namespace Project_ado.net.DAL
                 ConsoleHelper.WriteLineError($"Something went wrong: {ex.Message}.");
             }
         }
+
         private static void ThrowIfNullOrEmpty(string str)
         {
             if (string.IsNullOrEmpty(str))

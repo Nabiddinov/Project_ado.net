@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using Project_ado.net.DAL;
 using Project_ado.net.Models;
 
@@ -52,9 +51,6 @@ namespace ExpenseManager_UI_WPF
                 // Handle any exceptions that may occur during the operation
                 MessageBox.Show($"Error: {ex.Message}");
             }
-
-
-
         }
 
         // Event handler for "Find category by ID" button
@@ -158,10 +154,6 @@ namespace ExpenseManager_UI_WPF
                 }
             }
         }
-
-
-
-
 
 
         // Event handler for "Update Category" button
